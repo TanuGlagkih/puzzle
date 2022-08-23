@@ -1,0 +1,9 @@
+.imageBox{
+
+position:absolute;
+}
+
+.image{
+height: 80px;
+cursor: move;
+}
