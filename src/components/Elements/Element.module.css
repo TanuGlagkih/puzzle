@@ -1,9 +1,10 @@
-.imageBox{
-
-position:absolute;
+.imageBox {
+    width: 10vw;
+    max-width: 120px;
+    position: absolute;
 }
 
-.image{
-height: 80px;
-cursor: move;
+.image {
+    width: inherit;
+    cursor: move;
 }

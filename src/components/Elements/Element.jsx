@@ -1,7 +1,7 @@
 import styles from './Element.module.css';
 import { useDrag } from 'react-dnd';
 
-export function Element({ el, id, left, top }) {
+export function Element({ el, id, left, top, hideSourceOnDrag }) {
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: 'puzzle',
@@ -11,15 +11,15 @@ export function Element({ el, id, left, top }) {
       }),
     }),
     [id, left, top],
-    
+
   )
-  // if (isDragging && hideSourceOnDrag) {
-  //   return <div ref={drag} />
-  // }
-console.log(id, left, top)
+  if (isDragging && hideSourceOnDrag) {
+    return <div ref={drag} />
+  }
+  console.log(id, left, top)
   return (
     <li className={styles.imageBox} ref={drag}
-    style={{ left, top }} >
+      style={{ left, top }} >
       <img src={el} className={styles.image} >
       </img>
     </li>

@@ -1,15 +1,18 @@
 import { AppHeader } from '../AppHeader/AppHeader';
-import { Main } from '../Main/Main';
 import styles from './App.module.css';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
+import { Puzzle } from '../Puzzle/Puzzle';
+import { useState } from 'react';
 
 export function App() {
+  const [mixed, setMixed] = useState(true)
+
   return (
     <div className={styles.app}>
-      <AppHeader />
+      <AppHeader mixed={mixed} setMixed={setMixed} />
       <DndProvider backend={HTML5Backend}>
-        <Main />
+        <Puzzle mixed={mixed} />
       </DndProvider>
     </div>
   );

@@ -2,24 +2,32 @@ import styles from './Puzzle.module.css';
 import { Element } from '../Elements/Element';
 import update from 'immutability-helper';
 import { pieces } from '../../images/pieces/pieces.js'
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 
-export function Puzzle() {
+export function Puzzle({ mixed }) {
+    const [hideSourceOnDrag, setHideSourceOnDrag] = useState(true)
+    const toggle = useCallback(() =>
+        setHideSourceOnDrag(!hideSourceOnDrag),
+        [hideSourceOnDrag]
+    )
 
     const [boxes, setBoxes] = useState(pieces)
-    console.log(boxes)
+
+    useEffect(() => {
+        setBoxes(pieces)
+    }, [mixed])
+
     const moveBox = useCallback(
         (id, left, top) => {
             console.log(id, left, top)
             const a = boxes.findIndex(box => box.id === id)
             console.log(a)
             setBoxes(
-                    update(boxes, {[a]: { $merge: { left, top } }}) 
-                
+                update(boxes, { [a]: { $merge: { left, top } } })
             )
         },
-        [boxes, setBoxes],
+        [boxes, setBoxes]
     )
     const [, drop] = useDrop(
         () => ({
@@ -34,24 +42,28 @@ export function Puzzle() {
                 return undefined
             },
         }),
-        [moveBox],
+        [moveBox]
     )
     console.log(boxes)
     return (
-        <ul className={styles.elemBox} ref={drop}>
-            {boxes ?
-                boxes.map(box =>
-                    <Element
-                        el={box.el}
-                        key={box.id}
-                        id={box.id}
-                        left={box.left}
-                        top={box.top} />
+        <section className={styles.box}>
+            <ul className={styles.elemBox} ref={drop}>
+                {boxes ?
+                    boxes.map(box =>
+                        <Element
+                            el={box.el}
+                            key={box.id}
+                            id={box.id}
+                            left={box.left}
+                            top={box.top}
+                            hideSourceOnDrag={hideSourceOnDrag}
+                            onChange={toggle} />
 
-                ) : (
-                    <></>
-                )
-            }
-        </ul>
+                    ) : (
+                        <></>
+                    )
+                }
+            </ul>
+        </section>
     )
 }
