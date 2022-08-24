@@ -19,12 +19,12 @@ import el_16 from './16.jpg'
 
 export const pieces = []
 
-function createImg (el){
+function createImg(el) {
     return {
         el: el,
         id: uuidv4(),
-        left: Math.random()*100,
-        top: Math.random()*100
+        left: Math.random() * 300,
+        top: Math.random() * 300
     }
 }
 

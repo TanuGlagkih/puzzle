@@ -1,0 +1,18 @@
+.btn {
+    min-width: fit-content;
+    min-height: fit-content;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: medium;
+    font-weight: bold;
+    border: 2px solid transparent;
+    background-color: darkslategray;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: transparent;
+    color: black;
+    border-color: black;
+}
