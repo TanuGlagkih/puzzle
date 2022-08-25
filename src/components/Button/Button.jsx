@@ -1,9 +1,10 @@
 import styles from './Button.module.css';
 
-export function Button({ setMixed }) {
+export function Button({ mixed, setMixed }) {
     const click = () => {
-        setMixed(!setMixed)
+        setMixed(!mixed)
     }
+
     return (
         <button className={styles.btn} onClick={click}>
             Перемешать
