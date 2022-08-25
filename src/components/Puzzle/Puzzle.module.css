@@ -5,18 +5,11 @@
     justify-content: center;
 }
 
-/* 
-p{
-   font-family: 'Noto Sans', sans-serif;
-   font-family: 'Overpass', sans-serif;
-    font-style: italic;
-}*/
-
 .elemBox {
     width: 40vw;
     height: 60vh;
     margin-left: 10vw;
-    border: 2px solid black;
+    border: 0.5px solid whitesmoke;
 
     list-style: none;
     position: relative;

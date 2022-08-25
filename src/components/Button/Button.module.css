@@ -2,17 +2,20 @@
     min-width: fit-content;
     min-height: fit-content;
     border-radius: 5px;
-    padding: 4px;
+    padding: 8px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 300;
     font-size: medium;
     font-weight: bold;
     border: 2px solid transparent;
-    background-color: darkslategray;
     color: whitesmoke;
+    border-color: whitesmoke;
     cursor: pointer;
+    background: transparent;
 }
 
 .btn:hover {
-    background: transparent;
-    color: black;
-    border-color: black;
+    background-color: rgb(205, 109, 0);
+    color: white;
+    border-color: transparent;
 }

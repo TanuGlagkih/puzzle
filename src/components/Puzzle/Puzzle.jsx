@@ -13,9 +13,15 @@ export function Puzzle({ mixed }) {
     )
 
     const [boxes, setBoxes] = useState(pieces)
-
     useEffect(() => {
-        setBoxes(pieces)
+        const mixedPieces = pieces.map(el => el ?
+            {
+                ...el,
+                left: Math.random() * 300,
+                right: Math.random() * 300
+            }
+            : el)
+        setBoxes(mixedPieces)
     }, [mixed])
 
     const moveBox = useCallback(
@@ -34,8 +40,8 @@ export function Puzzle({ mixed }) {
             accept: 'puzzle',
             drop(item, monitor) {
                 const delta = monitor.getDifferenceFromInitialOffset()
-                const left = Math.round(item.left + delta.x)
-                const top = Math.round(item.top + delta.y)
+                const left = item.left + delta.x
+                const top = item.top + delta.y
                 console.log(item.id, left, top)
                 moveBox(item.id, left, top)
 
